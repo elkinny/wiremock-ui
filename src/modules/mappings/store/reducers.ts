@@ -173,6 +173,7 @@ export const mappingsByServerReducer = (
         case MappingsActionTypes.UPDATE_MAPPING_REQUEST:
         case MappingsActionTypes.UPDATE_MAPPING_SUCCESS:
         case MappingsActionTypes.DELETE_MAPPING_REQUEST:
+            console.log(action.payload); // tslint:disable-line
             return {
                 ...state,
                 byId: {

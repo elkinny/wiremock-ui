@@ -52,7 +52,7 @@ export default class MappingBar extends React.Component<IMappingBarProps> {
             save,
             deleteMapping,
         } = this.props
-
+        console.log(save); // tslint:disable-line
         return (
             <Container>
                 <ButtonsWrapper>

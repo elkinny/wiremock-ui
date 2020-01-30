@@ -31,11 +31,17 @@ const enhance = withFormik<IMappingBuilderProps, IMappingFormValues>({
     enableReinitialize: true,
     isInitialValid: true,
     mapPropsToValues: props => {
+        console.log('!!!!!!!!!!!!!!!!!!!');// tslint:disable-line
+        console.log(props.mapping);// tslint:disable-line
+        console.log('!!!!!!!!!!!!!!!!!');// tslint:disable-line
         return mappingToFormValues(props.mapping)
     },
     validationSchema: mappingValidationSchema,
     handleSubmit: (values, { props }) => {
-        props.save(mappingFormValuesToMapping(values))
+        console.log('11111111111111111111111111'); // tslint:disable-line
+        console.log(values); // tslint:disable-line
+        console.log('11111111111111111111111111'); // tslint:disable-line
+        props.save(mappingFormValuesToMapping(values)) // save
     }
 })
 

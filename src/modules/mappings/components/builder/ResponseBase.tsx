@@ -3,6 +3,7 @@ import { Trash2, PlusCircle } from 'react-feather'
 import { FieldArray, FormikErrors, FormikTouched, getIn } from 'formik'
 import { Button, Input } from 'edikit'
 import { IMappingFormValues } from '../../types'
+import AceEditor from 'react-ace'
 
 interface IResponseBaseProps {
     values: IMappingFormValues
@@ -28,6 +29,11 @@ export default class ResponseBase extends React.Component<IResponseBaseProps> {
             <FieldArray
                 name="responseHeaders"
                 render={helpers => {
+                    // function onChange11(newValue: any) {
+                    //     console.log("change", newValue); // tslint:disable-line
+                    //   }
+                      console.log("change", values.responseBody); // tslint:disable-line
+                      
                     return (
                         <React.Fragment>
                             <Button
@@ -114,6 +120,31 @@ export default class ResponseBase extends React.Component<IResponseBaseProps> {
                                     )}
                                 </React.Fragment>
                             ))}
+                            {values.responseBody && (
+                                <AceEditor
+                                    mode="json"
+                                    theme={'github'}
+                                    value={values.responseBody}
+                                    readOnly={false}
+                                    name="responseBody"
+                                    showPrintMargin={false}
+                                    showGutter={true}
+                                    highlightActiveLine={true}
+                                    editorProps={{
+                                        $blockScrolling: Infinity,
+                                    }}
+                                    onChange={(newValue, e) => { e.target = {};e.target.value = newValue; e.target.name = "responseBody"; onChange(e) }}
+                                    onBlur={onBlur}
+                                    fontSize={12}
+                                    wrapEnabled={false}
+                                    width="500px"
+                                    height="500px"
+                                    setOptions={{
+                                        showLineNumbers: true,
+                                        tabSize: 4,
+                                    }}
+                                />
+                            )}
                         </React.Fragment>
                     )
                 }}

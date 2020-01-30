@@ -72,6 +72,7 @@ const mapDispatchToProps = (dispatch: Dispatch, props: IOwnProps) => ({
         ))
     },
     updateMapping: (mapping: IMapping) => {
+        console.log(123); // tslint:disable-line
         dispatch(updateMappingRequest(
             props.serverName,
             props.mappingId,
